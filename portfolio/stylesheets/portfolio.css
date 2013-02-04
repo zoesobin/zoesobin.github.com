@@ -1,3 +1,21 @@
+
 body {
-	background-image:url('images/background.jpg');
+
+	background-color:#E0FFFF;
+    margin-left: 25%;
+    margin-right: 25%;
+	font-family: Georgia, Times, serif;
 	}
+h1{
+
+    border-bottom: aqua;
+    border-left: aqua;
+    border-right: aqua;
+    border-top: aqua;
+    border-width: 5px;
+    border-style: double;
+}
+div.resume{
+
+	background-color:#E0FFFF;
+}
