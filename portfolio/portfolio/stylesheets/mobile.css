@@ -1,22 +1,35 @@
 body {
-
-    background-color:#E0FFFF;
+    background-image:url('fishies.jpeg');
+    background-image: fixed;
     margin-left: 25%;
     margin-right: 25%;
     font-family: Georgia, Times, serif;
+    
+    
 }
 
 h1{
-
     border-bottom: aqua;
     border-left: aqua;
     border-right: aqua;
     border-top: aqua;
     border-width: 5px;
     border-style: double;
+    background-color:#E0FFFF;
+    text-align: center;
 }
 
-div.resume{
-
+div{
 	background-color:#E0FFFF;
+	text-align: center;
+	
+}
+div.resume{
+	text-align:left;
+	}
+div.bio{
+	text-align: left;
+}
+p{
+	background-color:#EoFFFF;
 }
