@@ -1,9 +1,9 @@
 body {
 
-  background-color:#0404B4;
+    background-color:#0404B4;
     margin-left: 25%;
     margin-right: 25%;
-	font-family: Georgia, Times, serif;
+    font-family: Georgia, Times, serif;
 	}
 h1{
 
@@ -16,5 +16,5 @@ h1{
 }
 div.resume{
 
-	background-color:#E0FFFF;
+    background-color:#E0FFFF;
 }
