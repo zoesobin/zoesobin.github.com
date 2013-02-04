@@ -2,5 +2,5 @@ body{
 }
 
 div.nodice{
-	visibility:hidden;
+	display:none;
 }
