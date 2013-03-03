@@ -82,13 +82,14 @@ function renderMap()
 function createStations()
 {
 	infowindows = new Array();
+	allmarkers = new Array();
     for (i = 0; i<22;i++){
     	function station(i){
     		// Create a marker
 			stations[i].i=i;
     		var name = stations[i].name;
     		var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    		var marker	= new google.maps.Marker({
+    		allmarkers[i]= new google.maps.Marker({
     			position: coords,
         		title: name,
         		zIndex: i
@@ -97,8 +98,8 @@ function createStations()
 			
 			infowindows[i]= new google.maps.InfoWindow({content: name });
 			
-			google.maps.event.addListener(marker, 'click', function() {
-        		infowindows[stations[marker.zIndex].i].open(map, marker);
+			google.maps.event.addListener(allmarkers[i], 'click', function() {
+        		infowindows[stations[marker.zIndex].i].open(map, this);
     		});
     		marker.setMap(map);
     	}
