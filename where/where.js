@@ -80,7 +80,7 @@ function renderMap()
 }
 
 function createStations()
-{
+
 
 	for (i=0; i<22; i++){
 		var marker = new google.maps.Marker({
@@ -88,18 +88,10 @@ function createStations()
       	  	title: stations[i].name
     	});
     	marker.setMap(map);
-		addInfo(marker,i);
-
-		
-	}
-}
-function addInfo(marker, i){
-        var infowindow = new google.maps.InfoWindow({
-          content: marker.name
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.close();
-          infowindow.open(marker.get('map'), marker);
-        });
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+            infowindow.setContent(markers[i].name);
+            infowindow.open(map, marker);
+        }
+    })(marker, i));
 }
