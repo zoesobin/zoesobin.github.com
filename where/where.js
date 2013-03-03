@@ -81,20 +81,21 @@ function renderMap()
 
 function createStations()
 {
+
     for (i = 0; i<22;i++){
-    	function station(){
+    	function station(i){
     		// Create a marker
+			stations[i].i=i;
     		var name = stations[i].name;
     		var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    		var marker = new google.maps.Marker({
+    		var marker	= new google.maps.Marker({
     			position: coords,
         		title: name
     			});
-        	var infowindow = new google.maps.InfoWindow({
-            	content: name
-         		});
+
 			google.maps.event.addListener(marker, 'click', function() {
-        		infowindow.open(map, this);
+				this.myinfowindow = new google.maps.InfoWindow({content: stations[this.i].name });
+        		this.myinfowindow.open(map, this);
     		});
     	}
     }
