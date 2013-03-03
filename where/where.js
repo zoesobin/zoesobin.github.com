@@ -95,10 +95,11 @@ function renderMap()
     infowindow.setContent(marker.title);
     infowindow.open(map, marker);
     });
+    createStations();
 
 }
 
-function createStations(place)
+function createStations()
 {
     for (i = 0; i<42;i++){
     	// Create a marker
