@@ -52,7 +52,7 @@ function getMyLocation()
     });
 }
 	else {
-        alert("Geolocation is not supported by your web browser.  What a shame!");
+        alert("Geolocation is not supported by your web browser");
         }
 }
 
@@ -75,6 +75,7 @@ function renderMap()
     infowindow.setContent(marker.title);
     infowindow.open(map, marker);
     });
+    parse();
     createStations();
 
 }
@@ -96,6 +97,7 @@ function createStations()
     	
     	google.maps.event.addListener(marker, 'click', (function(marker, i) {
         	return function() {
+        	 getTimes(i);
            	 infowindow.setContent(stations[i].name);
            	 infowindow.open(map, marker);
        	 	}
@@ -107,4 +109,18 @@ function createStations()
     	strokeColor: "#ff0000"
     	});
     polyline.setMap(map);
+}
+
+function parse() {
+		info = new XMLHttpRequest();
+		info.open('GET', 'http://mbtamap-cedar.herokuapp.com/mapper/redline.json', true);
+		info.send(null);
+}
+function getTimes(i){
+
+		if (info.readyState == 4 && info.status == 200){
+			parsed = JSON.parse(info.responseText);
+			console.log("made it");
+		}
+
 }
