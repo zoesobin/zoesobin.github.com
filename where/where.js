@@ -82,25 +82,19 @@ function renderMap()
 function createStations()
 {
 
-	allmarkers = new Array();
-    for (i = 0; i<22;i++){
-    
-    		// Create a marker
-			allmarkers[i] = {name:0, coords:0, marker:0};
-    		allmarkers[i].name = stations[i].name;
-    		allmarkers[i].coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    		allmarkers[i].marker= new google.maps.Marker({
-    			position: coords,
-        		title: allmarkers[i].name,
-        		zIndex: i
-    			});
-			
-			allmarker[i].infowindow= new google.maps.InfoWindow({content: allmarkers[i].name });
-			
-			google.maps.event.addListener(allmarkers[this.zIndex].marker, 'click', function() {
-        		allmarkers[this.zIndex].infowindow.open(map, this);
+	for (i=0; i<22; i++){
+		var marker = new google.maps.Marker({
+    		position: new google.maps.LatLng(stations[i].lat,stations[i].lon);
+      	  	title: stations[i].name
     		});
-    		allmarkers[i].marker.setMap(map);
-    	
-    }
+    		marker.setMap(map);
+
+   	 // Open info window on click of marker
+   		 var infowindow = new google.maps.InfoWindow;
+    	 google.maps.event.addListener(marker, 'click', function() {
+    		infowindow.setContent(marker.title);
+    		infowindow.open(map, marker);
+   	 });
+		
+
 }
