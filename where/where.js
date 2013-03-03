@@ -81,7 +81,7 @@ function renderMap()
 
 function createStations()
 {
-
+var infowindow = new google.maps.InfoWindow(), marker, i;
 	for (i=0; i<22; i++){
 		var marker = new google.maps.Marker({
     		position: new google.maps.LatLng(stations[i].lat,stations[i].lon),
