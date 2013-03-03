@@ -81,12 +81,14 @@ function renderMap()
 
 function createStations()
 {
+	coords= new Array();
+	markers = new Array();
     for (i = 0; i<22;i++){
     	// Create a marker
     	var name = stations[i].name;
-    	var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    	var marker = new google.maps.Marker({
-    		position: coords,
+    	coords[i] = new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    	markers[i] = new google.maps.Marker({
+    		position: coords[i],
         	title: name
     	});
     	marker.setMap(map);
