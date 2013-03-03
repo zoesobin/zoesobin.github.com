@@ -100,7 +100,7 @@ function createStations()
     	});
     }
 
-    polyline = google.maps.addPolyline({
+    polyline = google.maps.Polyline({
     	path: linecoords,
     	color: 'red',
     	map: map
