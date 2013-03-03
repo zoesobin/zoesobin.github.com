@@ -98,7 +98,7 @@ function createStations()
     	google.maps.event.addListener(marker, 'click', (function(marker, i) {
         	return function() {
         	 getTimes(i);
-           	 infowindow.setContent(stations[i].name);
+           	 infowindow.setContent(stations[i].name+"<br>"+stations[i].times);
            	 infowindow.open(map, marker);
        	 	}
    		 })(marker, i));
@@ -115,12 +115,22 @@ function parse() {
 		info = new XMLHttpRequest();
 		info.open('GET', 'http://mbtamap-cedar.herokuapp.com/mapper/redline.json', true);
 		info.send(null);
+		info.onreadystatechange= callback;
+		
+}
+function callback(){
+		if (info.readyState == 4 && info.status == 200){
+			parsed = JSON.parse(info.responseText);
 }
 function getTimes(i){
 
-		if (info.readyState == 4 && info.status == 200){
-			parsed = JSON.parse(info.responseText);
-			console.log("made it");
+	for (j=0;parsed[j]!=null; j++){
+		//find northbound from that station
+		if (stations[i].directions[0]!=null){
+			if ((parsed[j].platformkey==stations[i].key+stations[i].directions[0])&&parsed[j].InformationType=='Predicted'){
+				stations[i].times = stations[i].times + parsed[j] + '<br>';
+			}
 		}
+	}
 
 }
