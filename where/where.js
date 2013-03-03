@@ -102,6 +102,7 @@ function createStations()
 
     polyline = google.maps.Polyline({
     	path: linecoords,
-    	map: map
+    	strokeColor: "#ff0000"
     	});
+    polyline.setmap(map);
 }
