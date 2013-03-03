@@ -98,7 +98,7 @@ function createStations()
     	google.maps.event.addListener(marker, 'click', (function(marker, i) {
         	return function() {
         	 getTimes(i);
-           	 infowindow.setContent(stations[i].name+"<br>"+stations[i].times);
+           	 infowindow.setContent(stations[i].name+stations[i].times);
            	 infowindow.open(map, marker);
        	 	}
    		 })(marker, i));
@@ -129,7 +129,7 @@ function getTimes(i){
 		//find northbound from that station
 		if (stations[i].directions[0]!=null){
 			if ((parsed[j].platformkey==stations[i].key+stations[i].directions[0])&&parsed[j].InformationType=='Predicted'){
-				stations[i].times = stations[i].times + parsed[j] + '<br>';
+				stations[i].times = stations[i].times + parsed[j].Time ;
 			}
 		}
 	}
