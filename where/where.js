@@ -88,7 +88,8 @@ function createStations()
     	var marker = new google.maps.Marker({
     		position: coords,
         	title: stations[i].name,
-        	icon: 'icon.png',
+        	color: 'red',
+        	shape: 'circle',
         	map: map
     	});
     	linecoords[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
