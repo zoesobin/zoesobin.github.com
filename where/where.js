@@ -83,6 +83,7 @@ function createStations()
 {
 	infowindows = new Array();
     for (i = 0; i<22;i++){
+    	function station(i){
     		// Create a marker
 			stations[i].i=i;
     		var name = stations[i].name;
@@ -100,6 +101,6 @@ function createStations()
         		infowindows[stations[marker.zIndex].i].open(map, marker);
     		});
     		marker.setMap(map);
-    	
+    	}
     }
 }
