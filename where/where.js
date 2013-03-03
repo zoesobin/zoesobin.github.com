@@ -99,7 +99,7 @@ function createStations()
 			infowindows[i]= new google.maps.InfoWindow({content: name });
 			
 			google.maps.event.addListener(allmarkers[i], 'click', function() {
-        		infowindows[stations[marker.zIndex].i].open(map, this);
+        		infowindows[stations[this.zIndex].i].open(map, this);
     		});
     		marker.setMap(map);
     	}
