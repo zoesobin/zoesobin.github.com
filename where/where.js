@@ -81,15 +81,17 @@ function renderMap()
 
 function createStations()
 {
+	linecoords= new array();
     for (i = 0; stations[i]!=null ;i++){
     	// Create a marker
     	var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
     	var marker = new google.maps.Marker({
     		position: coords,
-    		icon: 'icon.png',
-        	title: stations[i].name
+        	title: stations[i].name,
+        	icon: 'icon.png'
     	});
-    	marker.setMap(map);
+    	linecoords[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+
 
 		google.maps.event.addListener(marker, 'click', function() {
         	infowindow.close();
@@ -97,4 +99,10 @@ function createStations()
         	infowindow.open(map, this);
     	});
     }
+
+    polyline = google.maps.addPolyline({
+    	path: linecoords,
+    	color: 'red',
+    	map: map
+    	});
 }
