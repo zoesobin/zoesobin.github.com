@@ -81,18 +81,29 @@ function renderMap()
 
 function createStations()
 {
-var infowindow = new google.maps.InfoWindow(), marker, i;
+	linecoords= new Array();
+	var infowindow = new google.maps.InfoWindow(), marker, i;
+
 	for (i=0; i<22; i++){
 		var marker = new google.maps.Marker({
     		position: new google.maps.LatLng(stations[i].lat,stations[i].lon),
       	  	title: stations[i].name
     	});
+    	
     	marker.setMap(map);
-    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-            infowindow.setContent(stations[i].name);
-            infowindow.open(map, marker);
-        }
-    })(marker, i));
-}
+    	linecoords[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    	
+    	google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        	return function() {
+           	 infowindow.setContent(stations[i].name);
+           	 infowindow.open(map, marker);
+       	 	}
+   		 })(marker, i));
+	}
+	
+    polyline = new google.maps.Polyline({
+    	path: linecoords,
+    	strokeColor: "#ff0000"
+    	});
+    polyline.setMap(map);
 }
