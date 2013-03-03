@@ -88,13 +88,18 @@ function createStations()
       	  	title: stations[i].name
     	});
     	marker.setMap(map);
+		addInfo(i);
 
-   	 // Open info window on click of marker
-   		 var infowindow = new google.maps.InfoWindow;
-    	 google.maps.event.addListener(marker, 'click', function() {
-    		infowindow.setContent(marker.title);
-    		infowindow.open(map, marker);
-   	 });
 		
 	}
+}
+function addInfo(i){
+        var infowindow = new google.maps.InfoWindow({
+          content: stations[i].name
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.close();
+          infowindow.open(marker.get('map'), marker);
+        });
 }
