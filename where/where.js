@@ -121,6 +121,7 @@ function parse() {
 function callback(){
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
+		}
 }
 function getTimes(i){
 
