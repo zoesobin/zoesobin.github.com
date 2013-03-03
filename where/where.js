@@ -80,7 +80,7 @@ function renderMap()
 }
 
 function createStations()
-
+{
 
 	for (i=0; i<22; i++){
 		var marker = new google.maps.Marker({
@@ -94,4 +94,5 @@ function createStations()
             infowindow.open(map, marker);
         }
     })(marker, i));
+}
 }
