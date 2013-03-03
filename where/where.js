@@ -1,18 +1,21 @@
+var lat;
+var lon;
+var me;
+var marker;
+var places;
+var map;
 function createmap(){
-	var lat;
-	var lon;
-	var me = new google.maps.LatLng(lat, lon);
+
+	me = new google.maps.LatLng(lat, lon);
 	var myOptions = {
 		zoom: 13, // The larger the zoom number, the bigger the zoom
 		center: me,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	
-	var map;
-	var marker;
-	var infowindow = new google.maps.InfoWindow();
-	var places;
 
+	infowindow = new google.maps.InfoWindow();
+	
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 	getMyLocation();
 }
