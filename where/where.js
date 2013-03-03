@@ -84,10 +84,10 @@ function createStations()
 
 	for (i=0; i<22; i++){
 		var marker = new google.maps.Marker({
-    		position: new google.maps.LatLng(stations[i].lat,stations[i].lon);
+    		position: new google.maps.LatLng(stations[i].lat,stations[i].lon),
       	  	title: stations[i].name
-    		});
-    		marker.setMap(map);
+    	});
+    	marker.setMap(map);
 
    	 // Open info window on click of marker
    		 var infowindow = new google.maps.InfoWindow;
