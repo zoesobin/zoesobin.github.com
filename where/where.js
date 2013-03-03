@@ -86,13 +86,14 @@ function createStations()
     	var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
     	var marker = new google.maps.Marker({
     		position: coords,
+    		icon: 'icon.png',
         	title: stations[i].name
     	});
     	marker.setMap(map);
 
 		google.maps.event.addListener(marker, 'click', function() {
         	infowindow.close();
-        	infowindow.setContent(stations[1].name);
+        	infowindow.setContent(stations[i].name);
         	infowindow.open(map, this);
     	});
     }
