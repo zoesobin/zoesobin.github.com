@@ -96,5 +96,5 @@ function createStations()
     		infowindow.open(map, marker);
    	 });
 		
-
+	}
 }
