@@ -93,10 +93,10 @@ function createStations()
     	});
     	markers[i].setMap(map);
 
-		google.maps.event.addListener(marker, 'click', function() {
+		google.maps.event.addListener(markers[i], 'click', function() {
         	infowindow.close();
-        	infowindow.setContent(marker.title);
-        	infowindow.open(map, marker);
+        	infowindow.setContent(markers[i].title);
+        	infowindow.open(map, markers[i]);
     	});
     }
 }
