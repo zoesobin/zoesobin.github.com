@@ -83,16 +83,17 @@ function createStations()
 {
     for (i = 0; i<42;i++){
     	// Create a marker
+    	var name = stations[i].name;
     	var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
     	var marker = new google.maps.Marker({
     		position: coords,
-        	title: stations[i].name
+        	title: name
     	});
     	marker.setMap(map);
 
 		google.maps.event.addListener(marker, 'click', function() {
         	infowindow.close();
-        	infowindow.setContent(marker.position);
+        	infowindow.setContent(marker.title);
         	infowindow.open(map, this);
     	});
     }
