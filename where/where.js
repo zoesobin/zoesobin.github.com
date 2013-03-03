@@ -30,7 +30,7 @@ function getMyLocation(){
 	}
 }
 function renderMap(){
-	me = new google.maps.LatLng(myLat, myLng);
+	me = new google.maps.LatLng(lat, lon);
 
 	// Update map and go there...
 	map.panTo(me);
