@@ -86,7 +86,7 @@ function createStations()
     for (i = 0; i<22;i++){
     
     		// Create a marker
-			stations[i].i=i;
+			allmarkers[i] = {};
     		allmarkers[i].name = stations[i].name;
     		allmarkers[i].coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
     		allmarkers[i].marker= new google.maps.Marker({
