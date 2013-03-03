@@ -84,17 +84,18 @@ function createStations()
 	linecoords= new Array();
     for (i = 0; stations[i]!=null ;i++){
     	// Create a marker
+    	var name = stations[i].name;
     	var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    	var marker = new google.maps.Marker({
+    	marker = new google.maps.Marker({
     		position: coords,
-        	title: stations[i].name,
+        	title: name,
         	map: map
     	});
     	linecoords[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
 
 		google.maps.event.addListener(marker, 'click', function() {
         	infowindow.close();
-        	infowindow.setContent(marker.getTitle());
+        	infowindow.setContent(name);
         	infowindow.open(map, this);
     	});
     }
