@@ -81,7 +81,7 @@ function renderMap()
 
 function createStations()
 {
-	infowindows = new Array();
+
 	allmarkers = new Array();
     for (i = 0; i<22;i++){
     
@@ -95,10 +95,10 @@ function createStations()
         		zIndex: i
     			});
 			
-			infowindows[i]= new google.maps.InfoWindow({content: allmarkers[i].name });
+			allmarker[i].infowindow= new google.maps.InfoWindow({content: allmarkers[i].name });
 			
 			google.maps.event.addListener(allmarkers[this.zIndex].marker, 'click', function() {
-        		infowindows[stations[this.zIndex].i].open(map, this);
+        		allmarkers[this.zIndex].infowindow.open(map, this);
     		});
     		marker.setMap(map);
     	
