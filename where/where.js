@@ -34,7 +34,6 @@ var myOptions = {
         };
 var map;
 var marker;
-var infowindow = new google.maps.InfoWindow();
 
 
 function createmap()
@@ -71,6 +70,7 @@ function renderMap()
     marker.setMap(map);
 
     // Open info window on click of marker
+    var infowindow = new google.maps.InfoWindow;
     google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(marker.title);
     infowindow.open(map, marker);
@@ -81,22 +81,20 @@ function renderMap()
 
 function createStations()
 {
-	coords= new Array();
-	markers = new Array();
     for (i = 0; i<22;i++){
     	// Create a marker
     	var name = stations[i].name;
-    	coords[i] = new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    	markers[i] = new google.maps.Marker({
-    		position: coords[i],
+    	var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    	var marker = new google.maps.Marker({
+    		position: coords,
         	title: name
     	});
-    	markers[i].setMap(map);
-
-		google.maps.event.addListener(markers[i], 'click', function() {
-        	infowindow.close();
-        	infowindow.setContent(markers[i].title);
-        	infowindow.open(map, markers[i]);
+    	marker.setMap(map);
+        var infowindow = new google.maps.InfoWindow({
+            content: station[i].name;
+         });
+		google.maps.event.addListener(marker, 'click', function() {
+        	infowindow.open(map, this);
     	});
     }
 }
