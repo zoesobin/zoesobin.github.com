@@ -100,7 +100,7 @@ function createStations()
 			google.maps.event.addListener(allmarkers[this.zIndex].marker, 'click', function() {
         		allmarkers[this.zIndex].infowindow.open(map, this);
     		});
-    		marker.setMap(map);
+    		allmarkers[i].marker.setMap(map);
     	
     }
 }
