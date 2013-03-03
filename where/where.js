@@ -88,14 +88,14 @@ function createStations()
       	  	title: stations[i].name
     	});
     	marker.setMap(map);
-		addInfo(i);
+		addInfo(marker,i);
 
 		
 	}
 }
-function addInfo(i){
+function addInfo(marker, i){
         var infowindow = new google.maps.InfoWindow({
-          content: stations[i].name
+          content: marker.name
         });
 
         google.maps.event.addListener(marker, 'click', function() {
