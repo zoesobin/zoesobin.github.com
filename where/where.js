@@ -85,15 +85,13 @@ function createStations()
     for (i = 0; stations[i]!=null ;i++){
     	// Create a marker
     	var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    	marker = new google.maps.Marker({
+    	var marker = new google.maps.Marker({
     		position: coords,
         	title: stations[i].name,
-        	//icon: 'icon.png',
-        	map: map
     	});
     	linecoords[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
 
-		console.log(stations[i].name);
+
 		google.maps.event.addListener(marker, 'click', function() {
         	infowindow.close();
         	infowindow.setContent(stations[i].name);
