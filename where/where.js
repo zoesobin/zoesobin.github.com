@@ -81,7 +81,7 @@ function renderMap()
 
 function createStations()
 {
-	linecoords= new array();
+	linecoords= new Array();
     for (i = 0; stations[i]!=null ;i++){
     	// Create a marker
     	var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
