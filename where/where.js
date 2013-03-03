@@ -84,7 +84,7 @@ function createStations()
 	infowindows = new Array();
 	allmarkers = new Array();
     for (i = 0; i<22;i++){
-    	function station(i){
+    
     		// Create a marker
 			stations[i].i=i;
     		allmarkers[i].name = stations[i].name;
@@ -101,6 +101,6 @@ function createStations()
         		infowindows[stations[this.zIndex].i].open(map, this);
     		});
     		marker.setMap(map);
-    	}
+    	
     }
 }
