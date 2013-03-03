@@ -81,7 +81,7 @@ function renderMap()
 
 function createStations()
 {
-
+	infowindows = new Array();
     for (i = 0; i<22;i++){
     	function station(i){
     		// Create a marker
@@ -90,12 +90,14 @@ function createStations()
     		var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
     		var marker	= new google.maps.Marker({
     			position: coords,
-        		title: name
+        		title: name,
+        		zIndex: i
     			});
 
+			infowindows[i]= new google.maps.InfoWindow({content: name });
+			
 			google.maps.event.addListener(marker, 'click', function() {
-				this.myinfowindow = new google.maps.InfoWindow({content: stations[this.i].name });
-        		this.myinfowindow.open(map, this);
+        		infowindows[stations[marker.zIndex].i].open(map, marker);
     		});
     	}
     }
