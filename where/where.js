@@ -87,18 +87,17 @@ function createStations()
     	function station(i){
     		// Create a marker
 			stations[i].i=i;
-    		var name = stations[i].name;
-    		var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    		allmarkers[i]= new google.maps.Marker({
+    		allmarkers[i].name = stations[i].name;
+    		allmarkers[i].coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		allmarkers[i].marker= new google.maps.Marker({
     			position: coords,
-        		title: name,
+        		title: allmarkers[i].name,
         		zIndex: i
-        		
     			});
 			
-			infowindows[i]= new google.maps.InfoWindow({content: name });
+			infowindows[i]= new google.maps.InfoWindow({content: allmarkers[i].name });
 			
-			google.maps.event.addListener(allmarkers[i], 'click', function() {
+			google.maps.event.addListener(allmarkers[this.zIndex].marker, 'click', function() {
         		infowindows[stations[this.zIndex].i].open(map, this);
     		});
     		marker.setMap(map);
