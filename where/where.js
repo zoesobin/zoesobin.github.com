@@ -91,7 +91,7 @@ function createStations()
     	});
     	marker.setMap(map);
         var infowindow = new google.maps.InfoWindow({
-            content: stations[i].name
+            content: name
          });
 		google.maps.event.addListener(marker, 'click', function() {
         	infowindow.open(map, this);
