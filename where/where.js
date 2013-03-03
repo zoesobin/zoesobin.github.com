@@ -91,13 +91,15 @@ function createStations()
     			position: coords,
         		title: name,
         		zIndex: i
+        		
     			});
-
+			
 			infowindows[i]= new google.maps.InfoWindow({content: name });
 			
 			google.maps.event.addListener(marker, 'click', function() {
         		infowindows[stations[marker.zIndex].i].open(map, marker);
     		});
+    		marker.setMap(map);
     	
     }
 }
