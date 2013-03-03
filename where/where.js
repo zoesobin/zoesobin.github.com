@@ -82,19 +82,20 @@ function renderMap()
 function createStations()
 {
     for (i = 0; i<22;i++){
-    	// Create a marker
-    	var name = stations[i].name;
-    	var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    	var marker = new google.maps.Marker({
-    		position: coords,
-        	title: name
-    	});
-    	marker.setMap(map);
-        var infowindow = new google.maps.InfoWindow({
-            content: name
-         });
-		google.maps.event.addListener(marker, 'click', function() {
-        	infowindow.open(map, this);
-    	});
+    	function(){
+    		// Create a marker
+    		var name = stations[i].name;
+    		var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		var marker = new google.maps.Marker({
+    			position: coords,
+        		title: name
+    			});
+        	var infowindow = new google.maps.InfoWindow({
+            	content: name
+         		});
+			google.maps.event.addListener(marker, 'click', function() {
+        		infowindow.open(map, this);
+    		});
+    	}
     }
 }
