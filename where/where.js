@@ -82,7 +82,6 @@ function renderMap()
 function createStations()
 {
 	linecoords= new Array();
-	circle =new google.maps.MarkerShape({ coords: [0,0,15], type: 'circle'});
     for (i = 0; stations[i]!=null ;i++){
     	// Create a marker
     	var coords = new google.maps.LatLng(stations[i].lat, stations[i].lon);
@@ -90,7 +89,7 @@ function createStations()
     		position: coords,
         	title: stations[i].name,
         	color: 'red',
-        	shape: circle,
+        	shape: { coords: [0,0,15], type: 'circle'},
         	map: map
     	});
     	linecoords[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
