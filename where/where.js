@@ -90,7 +90,7 @@ var infowindow = new google.maps.InfoWindow(), marker, i;
     	marker.setMap(map);
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-            infowindow.setContent(markers[i].name);
+            infowindow.setContent(stations[i].name);
             infowindow.open(map, marker);
         }
     })(marker, i));
