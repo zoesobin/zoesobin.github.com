@@ -93,7 +93,7 @@ function createStations()
     	});
     	linecoords[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
 
-
+		console.log(stations[i].name);
 		google.maps.event.addListener(marker, 'click', function() {
         	infowindow.close();
         	infowindow.setContent(stations[i].name);
