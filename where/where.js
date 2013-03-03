@@ -100,9 +100,9 @@ function createStations()
     	});
     }
 
-    polyline = google.maps.Polyline({
+    polyline = new google.maps.Polyline({
     	path: linecoords,
     	strokeColor: "#ff0000"
     	});
-    polyline.setmap(map);
+    polyline.setMap(map);
 }
