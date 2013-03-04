@@ -98,7 +98,7 @@ function createStations()
     	if (i<17){
     		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
     	}
-    	else(i==12||i>16){
+    	else if(i==12||i>16){
     		linecoords2[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
     	}
     	google.maps.event.addListener(marker, 'click', (function(marker, i) {
