@@ -116,11 +116,11 @@ function createStations()
     	});
     polyline.setMap(map);
 
-    polyline = new google.maps.Polyline({
+    polyline2 = new google.maps.Polyline({
     	path: linecoords2,
     	strokeColor: "#ff0000"
     	});
-    polyline.setMap(map);
+    polyline2.setMap(map);
 }
 
 function parse() {
