@@ -191,11 +191,17 @@ function parsejson(){
 			locating = JSON.parse(people.responseText);
 			findPeople(locating);
 		}
+		else if (info.status == 0){
+			error_message='error loading json';
+		}
 }
 
 function callback(){
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
+		}
+		else if (info.status == 0){
+			error_message='error loading json';
 		}
 }
 function getTimes(i){
@@ -213,7 +219,6 @@ function getTimes(i){
 	if (stations[i].directions[1]!=null){
 		stations[i].times = stations[i].times + 'Northbound Trains:' +'<br>';
 		for (j=0;parsed[j]!=null; j++){
-			console.log(j + parsed[j].PlatformKey + stations[i].key+stations[i].directions[1]);
 			if ((parsed[j].PlatformKey==stations[i].key+stations[i].directions[1])&&parsed[j].InformationType=='Predicted'){
 				stations[i].times = stations[i].times + parsed[j].Time + "<br>" ;
 			}
