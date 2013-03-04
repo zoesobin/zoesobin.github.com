@@ -79,7 +79,7 @@ function renderMap()
     marker.setMap(map);
 
     // Open info window on click of marker
-    var infowindow = new google.maps.InfoWindow;
+    infowindow = new google.maps.InfoWindow;
     google.maps.event.addListener(marker, 'click', function() {
     	infowindow.close();
     	infowindow.setContent(marker.title+'<br> Closest Station: '+stations[sta].name + '<br>Distance: ' + closest+' miles');
@@ -136,7 +136,7 @@ function findPeople(){
     marker1.setMap(map);
     
     // Open info window on click of marker
-    var infowindow = new google.maps.InfoWindow;
+    infowindow = new google.maps.InfoWindow;
     google.maps.event.addListener(marker1, 'click', function() {
         infowindow.close();
     	infowindow.setContent(marker1.title);
@@ -151,7 +151,7 @@ function findPeople(){
     
     marker2.setMap(map);
     // Open info window on click of marker
-    var infowindow = new google.maps.InfoWindow;
+    infowindow = new google.maps.InfoWindow;
     google.maps.event.addListener(marker2, 'click', function() {
     	infowindow.close();
     	infowindow.setContent(marker2.title);
