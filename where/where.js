@@ -124,7 +124,7 @@ function callback(){
 		}
 }
 function getTimes(i){
-
+	station[i].times = "<br>";
 	for (j=0;parsed[j]!=null; j++){
 		//find northbound from that station
 		if (stations[i].directions[0]!=null){
