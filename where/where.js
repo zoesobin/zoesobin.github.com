@@ -86,10 +86,18 @@ function renderMap()
 }
 
 function findPeople(){
-	walLat = locating[0].loc.latitude;
-	walLon = locating[0].loc.longitude;
-	carLat = locating[1].loc.latitude;
-	carLon = locating[1].loc.longitude; 
+	if (locating[0].name=='Waldo'){
+		walLat = locating[0].loc.latitude;
+		walLon = locating[0].loc.longitude;
+		carLat = locating[1].loc.latitude;
+		carLon = locating[1].loc.longitude;
+	}
+	else{
+	 	walLat = locating[1].loc.latitude;
+		walLon = locating[1].loc.longitude;
+		carLat = locating[0].loc.latitude;
+		carLon = locating[0].loc.longitude;
+	}
 	
 	var marker1 = new google.maps.Marker({
     	position: new google.maps.LatLng(walLat,walLon),
