@@ -224,6 +224,9 @@ function parsejson(){
 		if (info.readyState == 4 && info.status == 200){
 			parsed2 = JSON.parse(people.responseText);
 		}
+		else{
+			window.alert("JSON error");
+		}
 }
 
 function callback(){
