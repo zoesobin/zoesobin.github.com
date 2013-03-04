@@ -92,8 +92,8 @@ function findPeople(){
 	carLon = people[1].loc.longitude; 
 	
 	var marker1 = new google.maps.Marker({
-    	position: new google.maps.LatLng(walLat,walLon)
-        title: "Where's Waldo?"
+    	position: new google.maps.LatLng(walLat,walLon),
+        title: 'You found Waldo!'
     });
     marker1.setMap(map);
     
@@ -105,8 +105,8 @@ function findPeople(){
     });
     
 	var marker2 = new google.maps.Marker({
-    	position: new google.maps.LatLng(carLat,carLon)
-        title: "Where's Carmen?"
+    	position: new google.maps.LatLng(carLat,carLon),
+        title: 'You found Carmen Sandiego!'
     });
     
     marker2.setMap(map);
