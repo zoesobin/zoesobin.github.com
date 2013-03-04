@@ -88,7 +88,7 @@ function renderMap()
 }
 function findClosest(){
 
-	closest = calculateDistance(myLat, myLng, stations[0].lat, stations[0].lon;
+	closest = calculateDistance(myLat, myLng, stations[0].lat, stations[0].lon);
 	sta = 0;
 	for (var k=1; k<22; k++){
 		distance = calculateDistance(myLat, myLng, stations[k].lat, stations[k].lon);
