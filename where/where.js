@@ -77,13 +77,10 @@ function renderMap()
     });
     parse();
     createStations();
-    findPeople();
+ 
 
 }
-findPeople(){
 
-
-}
 function createStations()
 {
 	linecoords1= new Array();
