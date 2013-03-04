@@ -82,10 +82,9 @@ function renderMap()
     parse();
     createStations();
 
-
 }
 
-function findPeople(locating){
+function findPeople(locating3){
 	if (locating[0].name=='Waldo'){
 		walLat = locating[0].loc.latitude;
 		walLon = locating[0].loc.longitude;
@@ -187,6 +186,7 @@ function parse() {
 }
 function parsejson(){
 		if (info.readyState == 4 && info.status == 200){
+			console.log('parsing');
 			locating = JSON.parse(people.responseText);
 			findPeople(locating);
 		}
