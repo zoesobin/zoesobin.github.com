@@ -108,6 +108,9 @@ function findClosest(){
 //finds Lat and Lon for Carmen S. and Waldo, puts their locations on the map 
 //and calculates users distance to them.
 function findPeople(){
+
+	if (parsed2[0]==null&&parsed2[1]==null)return;
+	
 	if (parsed2[0]!=null){
 		if (parsed2[0].name=='Waldo'){
 			walLat = parsed2[0].loc.latitude;
