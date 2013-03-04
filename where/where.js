@@ -98,6 +98,7 @@ function createStations()
     	if (i==12){
     		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
     		linecoords2[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    	}
     	else if (i<=16){
     		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
     	}
