@@ -189,7 +189,7 @@ function createStations()
 		var marker = new google.maps.Marker({
     		position: new google.maps.LatLng(stations[i].lat,stations[i].lon),
       	  	title: stations[i].name,
-      	  	icon: 'icon.png'
+      	  	icon: 'pin.png'
     	});
     	
     	marker.setMap(map);
