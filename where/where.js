@@ -22,7 +22,7 @@ var stations =[
 {'name': 'QUINCY ADAMS', 	  'key': 'RQUA', 'directions': ['N','S'], 'lat':42.233391, 'lon':-71.007153},
 {'name': 'BRAINTREE', 		  'key': 'RBRA', 'directions': [null,'S'],'lat':42.2078543,'lon':-71.0011385}]; //end of line 2
 
-
+var numstations = 22;
 var myLat = 0;
 var myLng = 0;
 var carLat = 0;
@@ -91,7 +91,7 @@ function findClosest(){
 
 	closest = calculateDistance(myLat, myLng, stations[0].lat, stations[0].lon);
 	sta = 0;
-	for (var k=1; k<22; k++){
+	for (var k=1; k<numstations; k++){
 		distance = calculateDistance(myLat, myLng, stations[k].lat, stations[k].lon);
 		if (distance < closest){
 			closest=distance;
@@ -185,7 +185,9 @@ function createStations()
 	linecoords2 = new Array();
 	var infowindow = new google.maps.InfoWindow(), marker, i;
 	var z = 0;
-	for (i=0; i<22; i++){
+	for (i=0; i<numstations; i++){
+	
+		//create a marker for each station
 		var marker = new google.maps.Marker({
     		position: new google.maps.LatLng(stations[i].lat,stations[i].lon),
       	  	title: stations[i].name,
@@ -193,18 +195,8 @@ function createStations()
     	});
     	
     	marker.setMap(map);
-    	if (i==12){
-    		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    		linecoords2[z]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    		z++;
-    	}
-    	else if (i<=16){
-    		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    	}
-    	else if(i>16){
-    		linecoords2[z]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    		z++;
-    	}
+		getLinecoordinates(i);
+		//create listener for station click using a closure
     	google.maps.event.addListener(marker, 'click', (function(marker, i) {
         	return function() {
         	 getTimes(i);
@@ -215,6 +207,7 @@ function createStations()
    		 })(marker, i));
 	}
 	
+	//draw lines
     polyline = new google.maps.Polyline({
     	path: linecoords1,
     	strokeColor: "#ff0000"
@@ -228,6 +221,22 @@ function createStations()
     polyline2.setMap(map);
 }
 
+function getLinecoordinates(i)
+{
+    	//get line coordinates
+    	if (i==12){
+    		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		linecoords2[z]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		z++;
+    	}
+    	else if (i<=16){ 
+    		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    	}
+    	else if(i>16){
+    		linecoords2[z]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		z++;
+    	}
+}
 function parse() {
 		info = new XMLHttpRequest();
 		info.open('GET', 'http://mbtamap-cedar.herokuapp.com/mapper/redline.json', true);
@@ -253,7 +262,9 @@ function callback(){
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
 		}
-
+		else{
+			window.alert("MBTA JSON ERROR");
+		}
 }
 function getTimes(i){
 	stations[i].times = "<br>";
