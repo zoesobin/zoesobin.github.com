@@ -130,7 +130,7 @@ function getTimes(i){
 		if (stations[i].directions[0]!=null){
 			console.log(parsed[j].PlatformKey);
 			if ((parsed[j].PlatformKey==stations[i].key+stations[i].directions[0])&&parsed[j].InformationType=='Predicted'){
-				stations[i].times = stations[i].times + parsed[j].Time ;
+				stations[i].times = stations[i].times + parsed[j].Time+ "<br>" ;
 			}
 		}
 	}
