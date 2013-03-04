@@ -84,7 +84,7 @@ function renderMap()
 function createStations()
 {
 	linecoords1= new Array();
-	linecords2 = new Array();
+	linecoords2 = new Array();
 	var infowindow = new google.maps.InfoWindow(), marker, i;
 
 	for (i=0; i<22; i++){
