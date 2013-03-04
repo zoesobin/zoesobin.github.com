@@ -136,10 +136,10 @@ function findPeople(){
     	infowindow2.open(map, marker2);
     });
     
-    //distanceWaldo = calculateDistances(myLat, myLng, walLat, walLon);
-    //distanceCarmen = calculateDistances(myLat, myLng, carLat, carLon);
-   // console.log(distanceWaldo);
-   // console.log(distanceCarmen);
+    distanceWaldo = calculateDistances(myLat, myLng, walLat, walLon);
+    distanceCarmen = calculateDistances(myLat, myLng, carLat, carLon);
+    console.log(distanceWaldo);
+    console.log(distanceCarmen);
 }
 
 function calculateDistances(lat1, lon1, lat2, lon2){
