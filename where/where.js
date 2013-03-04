@@ -138,8 +138,9 @@ function getTimes(i){
 	if (stations[i].directions[1]!=null){
 		stations[i].times = stations[i].times + 'Southbound Trains:' +'<br>';
 		for (j=0;parsed[j]!=null; j++){
+			console.log(j);
 			if ((parsed[j].PlatformKey==stations[i].key+stations[i].directions[1])&&parsed[j].InformationType=='Predicted'){
-				console.log('hereeee');
+
 				stations[i].times = stations[i].times + parsed[j].Time + "<br>" ;
 			}
 		}
