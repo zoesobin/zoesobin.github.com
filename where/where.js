@@ -244,15 +244,18 @@ function parsejson(){
 			parsed2 = JSON.parse(people.responseText);
 			findPeople();
 		}
-		//need to add error handling
+		else{
+			window.alert("A3 JSON error-- expected");
+		}
 }
 
 function callback(){
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
 		}
-		
-		//need to add error handling
+		else{
+			window.alert("MBTA JSON ERROR");
+		}
 
 }
 function getTimes(i){
