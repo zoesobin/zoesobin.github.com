@@ -77,12 +77,17 @@ function renderMap()
     });
     parse();
     createStations();
+    findPeople();
 
 }
+findPeople(){
 
+
+}
 function createStations()
 {
-	linecoords= new Array();
+	linecoords1= new Array();
+	linecords2 = new Array();
 	var infowindow = new google.maps.InfoWindow(), marker, i;
 
 	for (i=0; i<22; i++){
@@ -93,8 +98,12 @@ function createStations()
     	});
     	
     	marker.setMap(map);
-    	linecoords[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    	
+    	if (i<17){
+    		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    	}
+    	else(i==12||i>16){
+    		linecoords2[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    	}
     	google.maps.event.addListener(marker, 'click', (function(marker, i) {
         	return function() {
         	 getTimes(i);
@@ -105,7 +114,13 @@ function createStations()
 	}
 	
     polyline = new google.maps.Polyline({
-    	path: linecoords,
+    	path: linecoords1,
+    	strokeColor: "#ff0000"
+    	});
+    polyline.setMap(map);
+
+    polyline = new google.maps.Polyline({
+    	path: linecoords2,
     	strokeColor: "#ff0000"
     	});
     polyline.setMap(map);
@@ -116,8 +131,18 @@ function parse() {
 		info.open('GET', 'http://mbtamap-cedar.herokuapp.com/mapper/redline.json', true);
 		info.send(null);
 		info.onreadystatechange= callback;
+		people = new XMLHttpRequest();
+		people.open('GET', 'http://messagehub.herokuapp.com/a3.json', true);
+		people.send(null);
+		people.onreadystatechange= parsejson;
 		
 }
+function parsejson(){
+		if (info.readyState == 4 && info.status == 200){
+			parsed = JSON.parse(people.responseText);
+		}
+}
+
 function callback(){
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
