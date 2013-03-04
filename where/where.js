@@ -29,6 +29,7 @@ var carLat = 0;
 var carLon = 0;
 var walLat = 0;
 var walLon = 0;
+var parsed2;
 var request = new XMLHttpRequest();
 var me = new google.maps.LatLng(myLat, myLng);
 var myOptions = {
