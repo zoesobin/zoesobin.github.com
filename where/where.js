@@ -191,18 +191,13 @@ function parsejson(){
 			locating = JSON.parse(people.responseText);
 			findPeople(locating);
 		}
-		else if (info.status == 0){
-			error_message='error loading json';
-		}
 }
 
 function callback(){
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
 		}
-		else if (info.status == 0){
-			error_message='error loading json';
-		}
+
 }
 function getTimes(i){
 	stations[i].times = "<br>";
