@@ -95,10 +95,13 @@ function createStations()
     	});
     	
     	marker.setMap(map);
-    	if (i<17){
+    	if (i==12){
+    		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		linecoords2[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    	else if (i<=16){
     		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
     	}
-    	if(i==12||i>16){
+    	else if(i>16){
     		linecoords2[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
     	}
     	google.maps.event.addListener(marker, 'click', (function(marker, i) {
