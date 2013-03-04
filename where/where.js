@@ -240,7 +240,8 @@ function parse() {
 		
 }
 function parsejson(){
-		if (info.readyState == 4 && info.status == 200){
+		console.log("A3 Ready State: " + people.readyState);
+		if (people.readyState == 4 && people.status == 200){
 			parsed2 = JSON.parse(people.responseText);
 			findPeople();
 		}
@@ -250,6 +251,7 @@ function parsejson(){
 }
 
 function callback(){
+		console.log("MBTA Ready State: " + info.readyState);
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
 		}
