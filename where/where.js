@@ -186,8 +186,6 @@ function createStations()
 	var infowindow = new google.maps.InfoWindow(), marker, i;
 	var z = 0;
 	for (i=0; i<numstations; i++){
-	
-		//create a marker for each station
 		var marker = new google.maps.Marker({
     		position: new google.maps.LatLng(stations[i].lat,stations[i].lon),
       	  	title: stations[i].name,
@@ -195,8 +193,18 @@ function createStations()
     	});
     	
     	marker.setMap(map);
-		getLinecoordinates(i);
-		//create listener for station click using a closure
+    	if (i==12){
+    		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		linecoords2[z]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		z++;
+    	}
+    	else if (i<=16){
+    		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    	}
+    	else if(i>16){
+    		linecoords2[z]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		z++;
+    	}
     	google.maps.event.addListener(marker, 'click', (function(marker, i) {
         	return function() {
         	 getTimes(i);
@@ -207,7 +215,6 @@ function createStations()
    		 })(marker, i));
 	}
 	
-	//draw lines
     polyline = new google.maps.Polyline({
     	path: linecoords1,
     	strokeColor: "#ff0000"
@@ -221,22 +228,6 @@ function createStations()
     polyline2.setMap(map);
 }
 
-function getLinecoordinates(i)
-{
-    	//get line coordinates
-    	if (i==12){
-    		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    		linecoords2[z]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    		z++;
-    	}
-    	else if (i<=16){ 
-    		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    	}
-    	else if(i>16){
-    		linecoords2[z]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    		z++;
-    	}
-}
 function parse() {
 		info = new XMLHttpRequest();
 		info.open('GET', 'http://mbtamap-cedar.herokuapp.com/mapper/redline.json', true);
@@ -253,18 +244,16 @@ function parsejson(){
 			parsed2 = JSON.parse(people.responseText);
 			findPeople();
 		}
-		else{
-			window.alert("JSON error");
-		}
+		//need to add error handling
 }
 
 function callback(){
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
 		}
-		else{
-			window.alert("MBTA JSON ERROR");
-		}
+		
+		//need to add error handling
+
 }
 function getTimes(i){
 	stations[i].times = "<br>";
