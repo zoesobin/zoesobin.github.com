@@ -85,17 +85,25 @@ function renderMap()
 }
 
 function findPeople(locating3){
-	if (parsed2[0].name=='Waldo'){
-		walLat = parsed2[0].loc.latitude;
-		walLon = parsed2[0].loc.longitude;
-		carLat = parsed2[1].loc.latitude;
-		carLon = parsed2[1].loc.longitude;
+	if (parsed2[0]!=null){
+		if (parsed2[0].name=='Waldo'){
+			walLat = parsed2[0].loc.latitude;
+			walLon = parsed2[0].loc.longitude;
+		}
+		else{
+			carLat = parsed2[0].loc.latitude;
+			carLon = parsed2[0].loc.longitude;
+		}
 	}
-	else{
-	 	walLat = parsed2[1].loc.latitude;
-		walLon = parsed2[1].loc.longitude;
-		carLat = parsed2[0].loc.latitude;
-		carLon = parsed2[0].loc.longitude;
+	if (parsed2[1]!=null){
+		if (parsed2[1].name=='Waldo'){
+			walLat = parsed2[1].loc.latitude;
+			walLon = parsed2[1].loc.longitude;
+		}
+		else{
+			carLat = parsed2[1].loc.latitude;
+			carLon = parsed2[1].loc.longitude;
+		}
 	}
 	
 	var marker1 = new google.maps.Marker({
