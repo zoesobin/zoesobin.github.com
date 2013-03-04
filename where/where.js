@@ -245,9 +245,7 @@ function parsejson(){
 			parsed2 = JSON.parse(people.responseText);
 			findPeople();
 		}
-		else{
-			window.alert("A3 JSON error-- expected");
-		}
+
 }
 
 function callback(){
@@ -255,9 +253,7 @@ function callback(){
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
 		}
-		else{
-			window.alert("MBTA JSON ERROR");
-		}
+
 
 }
 function getTimes(i){
