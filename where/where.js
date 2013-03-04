@@ -86,10 +86,10 @@ function renderMap()
 }
 
 function findPeople(){
-	walLat = people[0].loc.latitude;
-	walLon = people[0].loc.longitude;
-	carLat = people[1].loc.latitude;
-	carLon = people[1].loc.longitude; 
+	walLat = locating[0].loc.latitude;
+	walLon = locating[0].loc.longitude;
+	carLat = locating[1].loc.latitude;
+	carLon = locating[1].loc.longitude; 
 	
 	var marker1 = new google.maps.Marker({
     	position: new google.maps.LatLng(walLat,walLon),
@@ -179,7 +179,7 @@ function parse() {
 }
 function parsejson(){
 		if (info.readyState == 4 && info.status == 200){
-			parsed = JSON.parse(people.responseText);
+			locating = JSON.parse(people.responseText);
 		}
 }
 
