@@ -143,7 +143,7 @@ function findPeople(){
     
 	var marker2 = new google.maps.Marker({
     	position: new google.maps.LatLng(carLat,carLon),
-        title: 'You found me! I am only '+ distanceCarmen+' miles away!,
+        title: 'You found me! I am only '+ distanceCarmen+' miles away!',
         icon: 'carmen.png'
     });
     
