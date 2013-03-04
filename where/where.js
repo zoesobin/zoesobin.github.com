@@ -60,7 +60,7 @@ function getMyLocation()
         alert("Geolocation is not supported by your web browser");
         }
 }
-
+//renders map and marker with the users location
 function renderMap()
 {
     me = new google.maps.LatLng(myLat, myLng);
@@ -71,6 +71,7 @@ function renderMap()
     parse();
     createStations();
 	findClosest();
+	findPeople();
 
     var marker = new google.maps.Marker({
     	position: me,
@@ -87,6 +88,8 @@ function renderMap()
     });
     
 }
+
+//locates closest T station to the user
 function findClosest(){
 
 	closest = calculateDistance(myLat, myLng, stations[0].lat, stations[0].lon);
@@ -101,6 +104,9 @@ function findClosest(){
 
 
 }
+
+//finds Lat and Lon for Carmen S. and Waldo, puts their locations on the map 
+//and calculates users distance to them.
 function findPeople(){
 	if (parsed2[0]!=null){
 		if (parsed2[0].name=='Waldo'){
@@ -161,6 +167,7 @@ function findPeople(){
 
 }
 
+//Haversine Formula -- source: http://www.movable-type.co.uk/scripts/latlong.html
 function calculateDistance(lat1, lon1, lat2, lon2)
 {
 	var R = 6371; // km
@@ -181,6 +188,8 @@ function toRad(x)
    return x * Math.PI / 180;
 }
 
+
+//renders stations and red line on map
 function createStations()
 {
 	linecoords1= new Array();
@@ -246,21 +255,18 @@ function parsejson()
 {
 		if (people.readyState == 4 && people.status == 200){
 			parsed2 = JSON.parse(people.responseText);
-			findPeople();
-		}
 
+		}
 }
 
 function callback()
 {
-
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
 		}
-
-
 }
 
+//search through parsed JSON for the arrival times of the clicked station
 function getTimes(i)
 {
 	stations[i].times = "<br>";
