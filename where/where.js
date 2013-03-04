@@ -25,6 +25,10 @@ var stations =[
 
 var myLat = 0;
 var myLng = 0;
+var carLat = 0;
+var carLon = 0;
+var walLat = 0;
+var walLon = 0;
 var request = new XMLHttpRequest();
 var me = new google.maps.LatLng(myLat, myLng);
 var myOptions = {
@@ -77,8 +81,41 @@ function renderMap()
     });
     parse();
     createStations();
- 
+ 	findPeople();
 
+}
+
+function findPeople(){
+	walLat = people[0].loc.latitude;
+	walLon = people[0].loc.longitude;
+	carLat = people[1].loc.latitude;
+	carLon = people[1].loc.longitude; 
+	
+	var marker1 = new google.maps.Marker({
+    	position: new google.maps.LatLng(walLat,walLon)
+        title: "Where's Waldo?"
+    });
+    marker1.setMap(map);
+    
+    // Open info window on click of marker
+    var infowindow1 = new google.maps.InfoWindow;
+    google.maps.event.addListener(marker1, 'click', function() {
+    	infowindow1.setContent(marker1.title);
+    	infowindow1.open(map, marker1);
+    });
+    
+	var marker2 = new google.maps.Marker({
+    	position: new google.maps.LatLng(carLat,carLon)
+        title: "Where's Carmen?"
+    });
+    
+    marker2.setMap(map);
+    // Open info window on click of marker
+    var infowindow2 = new google.maps.InfoWindow;
+    google.maps.event.addListener(marker2, 'click', function() {
+    	infowindow2.setContent(marker2.title);
+    	infowindow2.open(map, marker2);
+    });
 }
 
 function createStations()
