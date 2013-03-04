@@ -127,7 +127,7 @@ function getTimes(i){
 	stations[i].times = "<br>";
 		//find northbound from that station
 	if (stations[i].directions[0]!=null){
-		stations[i].times = stations[i].times + 'Northbound Trains:' +'<br>';
+		stations[i].times = stations[i].times + 'Southbound Trains:' +'<br>';
 		for (j=0;parsed[j]!=null; j++){
 			if ((parsed[j].PlatformKey==stations[i].key+stations[i].directions[0])&&parsed[j].InformationType=='Predicted'){
 				stations[i].times = stations[i].times + parsed[j].Time+ "<br>" ;
@@ -136,7 +136,7 @@ function getTimes(i){
 	}
 		//find southbound
 	if (stations[i].directions[1]!=null){
-		stations[i].times = stations[i].times + 'Southbound Trains:' +'<br>';
+		stations[i].times = stations[i].times + 'Northbound Trains:' +'<br>';
 		for (j=0;parsed[j]!=null; j++){
 			console.log(j + parsed[j].PlatformKey + stations[i].key+stations[i].directions[1]);
 			if ((parsed[j].PlatformKey==stations[i].key+stations[i].directions[1])&&parsed[j].InformationType=='Predicted'){
