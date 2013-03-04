@@ -128,7 +128,8 @@ function getTimes(i){
 	for (j=0;parsed[j]!=null; j++){
 		//find northbound from that station
 		if (stations[i].directions[0]!=null){
-			if ((parsed[j].platformkey==stations[i].key+stations[i].directions[0])&&parsed[j].InformationType=='Predicted'){
+			console.log(parsed[j].PlatformKey);
+			if ((parsed[j].PlatformKey==stations[i].key+stations[i].directions[0])&&parsed[j].InformationType=='Predicted'){
 				stations[i].times = stations[i].times + parsed[j].Time ;
 			}
 		}
