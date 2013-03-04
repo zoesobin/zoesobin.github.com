@@ -86,7 +86,7 @@ function createStations()
 	linecoords1= new Array();
 	linecoords2 = new Array();
 	var infowindow = new google.maps.InfoWindow(), marker, i;
-
+	var z = 0;
 	for (i=0; i<22; i++){
 		var marker = new google.maps.Marker({
     		position: new google.maps.LatLng(stations[i].lat,stations[i].lon),
@@ -97,13 +97,15 @@ function createStations()
     	marker.setMap(map);
     	if (i==12){
     		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
-    		linecoords2[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		linecoords2[z]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		z++;
     	}
     	else if (i<=16){
     		linecoords1[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
     	}
     	else if(i>16){
-    		linecoords2[i]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		linecoords2[z]= new google.maps.LatLng(stations[i].lat, stations[i].lon);
+    		z++;
     	}
     	google.maps.event.addListener(marker, 'click', (function(marker, i) {
         	return function() {
