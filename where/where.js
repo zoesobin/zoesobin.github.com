@@ -123,8 +123,8 @@ function findPeople(){
 	}
 	
 	
-	distanceWaldo = calculateDistances(myLat, myLng, walLat, walLon);
-    distanceCarmen = calculateDistances(myLat, myLng, carLat, carLon);
+	distanceWaldo = calculateDistance(myLat, myLng, walLat, walLon);
+    distanceCarmen = calculateDistance(myLat, myLng, carLat, carLon);
 	
 	
 	var marker1 = new google.maps.Marker({
@@ -158,7 +158,7 @@ function findPeople(){
 
 }
 
-function calculateDistances(lat1, lon1, lat2, lon2){
+function calculateDistance(lat1, lon1, lat2, lon2){
 	var R = 6371; // km
 	var dLat = toRad(lat2-lat1);
 	var dLon = toRad(lon2-lon1);
