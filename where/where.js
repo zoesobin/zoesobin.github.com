@@ -81,8 +81,9 @@ function renderMap()
     // Open info window on click of marker
     var infowindow = new google.maps.InfoWindow;
     google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(marker.title+'<br> Closest Station: '+stations[sta].name + '<br>Distance: ' + closest+' miles');
-    infowindow.open(map, marker);
+    	infowindow.close();
+    	infowindow.setContent(marker.title+'<br> Closest Station: '+stations[sta].name + '<br>Distance: ' + closest+' miles');
+    	infowindow.open(map, marker);
     });
     
 }
@@ -135,10 +136,11 @@ function findPeople(){
     marker1.setMap(map);
     
     // Open info window on click of marker
-    var infowindow1 = new google.maps.InfoWindow;
+    var infowindow = new google.maps.InfoWindow;
     google.maps.event.addListener(marker1, 'click', function() {
-    	infowindow1.setContent(marker1.title);
-    	infowindow1.open(map, marker1);
+        infowindow.close();
+    	infowindow.setContent(marker1.title);
+    	infowindow.open(map, marker1);
     });
     
 	var marker2 = new google.maps.Marker({
@@ -149,10 +151,11 @@ function findPeople(){
     
     marker2.setMap(map);
     // Open info window on click of marker
-    var infowindow2 = new google.maps.InfoWindow;
+    var infowindow = new google.maps.InfoWindow;
     google.maps.event.addListener(marker2, 'click', function() {
-    	infowindow2.setContent(marker2.title);
-    	infowindow2.open(map, marker2);
+    	infowindow.close();
+    	infowindow.setContent(marker2.title);
+    	infowindow.open(map, marker2);
     });
     
 
