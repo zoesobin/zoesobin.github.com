@@ -129,7 +129,7 @@ function findPeople(){
 	
 	var marker1 = new google.maps.Marker({
     	position: new google.maps.LatLng(walLat,walLon),
-        title: 'You found me! I am only this far away: ' + distanceWaldo,
+        title: 'You found me! I am only ' + distanceWaldo+' miles away!,
         icon: 'waldo.png'
     });
     marker1.setMap(map);
@@ -143,7 +143,7 @@ function findPeople(){
     
 	var marker2 = new google.maps.Marker({
     	position: new google.maps.LatLng(carLat,carLon),
-        title: 'You found me! I am only this far away: ' + distanceCarmen,
+        title: 'You found me! I am only '+ distanceCarmen+' miles away!,
         icon: 'carmen.png'
     });
     
