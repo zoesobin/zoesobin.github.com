@@ -100,7 +100,8 @@ function findPeople(locating3){
 	
 	var marker1 = new google.maps.Marker({
     	position: new google.maps.LatLng(walLat,walLon),
-        title: 'You found Waldo!'
+        title: 'You found Waldo!',
+        icon: 'waldo.png'
     });
     marker1.setMap(map);
     
@@ -113,7 +114,8 @@ function findPeople(locating3){
     
 	var marker2 = new google.maps.Marker({
     	position: new google.maps.LatLng(carLat,carLon),
-        title: 'You found Carmen Sandiego!'
+        title: 'You found Carmen Sandiego!',
+        icon: 'carmen.png'
     });
     
     marker2.setMap(map);
@@ -186,7 +188,6 @@ function parse() {
 }
 function parsejson(){
 		if (info.readyState == 4 && info.status == 200){
-			console.log('parsing');
 			locating = JSON.parse(people.responseText);
 			findPeople(locating);
 		}
