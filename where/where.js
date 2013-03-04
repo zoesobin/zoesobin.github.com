@@ -100,7 +100,7 @@ function findPeople(locating3){
 	
 	var marker1 = new google.maps.Marker({
     	position: new google.maps.LatLng(walLat,walLon),
-        title: 'You found Waldo!',
+        title: 'You found me!',
         icon: 'waldo.png'
     });
     marker1.setMap(map);
@@ -114,7 +114,7 @@ function findPeople(locating3){
     
 	var marker2 = new google.maps.Marker({
     	position: new google.maps.LatLng(carLat,carLon),
-        title: 'You found Carmen Sandiego!',
+        title: 'You found me!',
         icon: 'carmen.png'
     });
     
@@ -125,6 +125,28 @@ function findPeople(locating3){
     	infowindow2.setContent(marker2.title);
     	infowindow2.open(map, marker2);
     });
+    
+    distanceWaldo = calculateDistances(myLat, myLng, walLat, walLon);
+    distanceCarmen = calculateDistances(myLat, myLng, carLat, carLon);
+    console.log(distanceWaldo);
+    console.log(distanceCarmen);
+}
+
+function calculateDistances(lat1, lon1, lat2, lon2){
+	var R = 6371; // km
+	var dLat = toRad(lat2-lat1);
+	var dLon = toRad(lon2-lon1);
+	var lat1 = toRad(lat1);
+	var lat2 = toRad(lat2);
+
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var d = R * c;
+	return d;
+}
+function toRad(x) {
+   return x * Math.PI / 180;
 }
 
 function createStations()
