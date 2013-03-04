@@ -108,9 +108,16 @@ function findPeople(){
 		}
 	}
 	
+	
+	distanceWaldo = calculateDistances(myLat, myLng, walLat, walLon);
+    distanceCarmen = calculateDistances(myLat, myLng, carLat, carLon);
+    console.log(distanceWaldo);
+    console.log(distanceCarmen);
+	
+	
 	var marker1 = new google.maps.Marker({
     	position: new google.maps.LatLng(walLat,walLon),
-        title: 'You found me!',
+        title: 'You found me! I am only this far away: ' + distanceWaldo,
         icon: 'waldo.png'
     });
     marker1.setMap(map);
@@ -124,7 +131,7 @@ function findPeople(){
     
 	var marker2 = new google.maps.Marker({
     	position: new google.maps.LatLng(carLat,carLon),
-        title: 'You found me!',
+        title: 'You found me! I am only this far away: ' + distanceCarmen,
         icon: 'carmen.png'
     });
     
@@ -136,10 +143,7 @@ function findPeople(){
     	infowindow2.open(map, marker2);
     });
     
-    distanceWaldo = calculateDistances(myLat, myLng, walLat, walLon);
-    distanceCarmen = calculateDistances(myLat, myLng, carLat, carLon);
-    console.log(distanceWaldo);
-    console.log(distanceCarmen);
+
 }
 
 function calculateDistances(lat1, lon1, lat2, lon2){
