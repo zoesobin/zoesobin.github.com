@@ -82,9 +82,7 @@ function renderMap()
     });
     parse();
     createStations();
-    if(parsed2){
-    	findPeople();
-    }
+
 
 }
 
@@ -223,6 +221,7 @@ function parse() {
 function parsejson(){
 		if (info.readyState == 4 && info.status == 200){
 			parsed2 = JSON.parse(people.responseText);
+			findPeople();
 		}
 		else{
 			window.alert("JSON error");
