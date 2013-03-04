@@ -208,6 +208,7 @@ function createStations()
     	google.maps.event.addListener(marker, 'click', (function(marker, i) {
         	return function() {
         	 getTimes(i);
+        	 infowindow.close();
            	 infowindow.setContent(stations[i].name+stations[i].times);
            	 infowindow.open(map, marker);
        	 	}
