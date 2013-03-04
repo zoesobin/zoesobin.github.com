@@ -161,7 +161,8 @@ function findPeople(){
 
 }
 
-function calculateDistance(lat1, lon1, lat2, lon2){
+function calculateDistance(lat1, lon1, lat2, lon2)
+{
 	var R = 6371; // km
 	var dLat = toRad(lat2-lat1);
 	var dLon = toRad(lon2-lon1);
@@ -170,12 +171,13 @@ function calculateDistance(lat1, lon1, lat2, lon2){
 
 	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
         Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-	var d = R * c;
-	d= Math.round(d*1000)/1000 
-	return d;
+	a = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	a = R * a;
+	a= Math.round(a*1000)/1000 
+	return a;
 }
-function toRad(x) {
+function toRad(x) 
+{
    return x * Math.PI / 180;
 }
 
@@ -228,7 +230,8 @@ function createStations()
     polyline2.setMap(map);
 }
 
-function parse() {
+function parse() 
+{
 		info = new XMLHttpRequest();
 		info.open('GET', 'http://mbtamap-cedar.herokuapp.com/mapper/redline.json', true);
 		info.send(null);
@@ -239,8 +242,8 @@ function parse() {
 		people.onreadystatechange= parsejson;
 		
 }
-function parsejson(){
-		console.log("A3 Ready State: " + people.readyState);
+function parsejson()
+{
 		if (people.readyState == 4 && people.status == 200){
 			parsed2 = JSON.parse(people.responseText);
 			findPeople();
@@ -248,15 +251,18 @@ function parsejson(){
 
 }
 
-function callback(){
-		console.log("MBTA Ready State: " + info.readyState);
+function callback()
+{
+
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
 		}
 
 
 }
-function getTimes(i){
+
+function getTimes(i)
+{
 	stations[i].times = "<br>";
 		//find northbound from that station
 	if (stations[i].directions[0]!=null){
