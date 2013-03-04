@@ -81,7 +81,7 @@ function renderMap()
     // Open info window on click of marker
     var infowindow = new google.maps.InfoWindow;
     google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(marker.title+'<br> Closest Station: '+stations[sta].name + '<br>Distance: ' + closest);
+    infowindow.setContent(marker.title+'<br> Closest Station: '+stations[sta].name + '<br>Distance: ' + closest+' miles');
     infowindow.open(map, marker);
     });
     
