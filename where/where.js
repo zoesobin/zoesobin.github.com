@@ -68,6 +68,10 @@ function renderMap()
     // Update map and go there...
     map.panTo(me);
 
+    parse();
+    createStations();
+	findClosest();
+
     var marker = new google.maps.Marker({
     	position: me,
         title: "Here I Am!"
@@ -77,15 +81,25 @@ function renderMap()
     // Open info window on click of marker
     var infowindow = new google.maps.InfoWindow;
     google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(marker.title);
+    infowindow.setContent(marker.title+'<br> Closest Station: '+stations[sta].name + '<br>Distance: ' + closest);
     infowindow.open(map, marker);
     });
-    parse();
-    createStations();
+    
+}
+function findClosest(){
+
+	closest = calculateDistance(myLat, myLng, stations[0].lat, stations[0].lon;
+	sta = 0;
+	for (var k=1; k<22; k++){
+		distance = calculateDistance(myLat, myLng, stations[k].lat, stations[k].lon);
+		if (distance < closest){
+			closest=distance;
+			sta = k;
+		}
+	}
 
 
 }
-
 function findPeople(){
 	if (parsed2[0]!=null){
 		if (parsed2[0].name=='Waldo'){
@@ -111,8 +125,6 @@ function findPeople(){
 	
 	distanceWaldo = calculateDistances(myLat, myLng, walLat, walLon);
     distanceCarmen = calculateDistances(myLat, myLng, carLat, carLon);
-    console.log(distanceWaldo);
-    console.log(distanceCarmen);
 	
 	
 	var marker1 = new google.maps.Marker({
@@ -243,7 +255,7 @@ function getTimes(i){
 		//find northbound from that station
 	if (stations[i].directions[0]!=null){
 		stations[i].times = stations[i].times + 'Southbound Trains:' +'<br>';
-		for (j=0;parsed[j]!=null; j++){
+		for (var j=0;parsed[j]!=null; j++){
 			if ((parsed[j].PlatformKey==stations[i].key+stations[i].directions[0])&&parsed[j].InformationType=='Predicted'){
 				stations[i].times = stations[i].times + parsed[j].Time+ "<br>" ;
 			}
@@ -252,7 +264,7 @@ function getTimes(i){
 		//find southbound
 	if (stations[i].directions[1]!=null){
 		stations[i].times = stations[i].times + 'Northbound Trains:' +'<br>';
-		for (j=0;parsed[j]!=null; j++){
+		for (var j=0;parsed[j]!=null; j++){
 			if ((parsed[j].PlatformKey==stations[i].key+stations[i].directions[1])&&parsed[j].InformationType=='Predicted'){
 				stations[i].times = stations[i].times + parsed[j].Time + "<br>" ;
 			}
