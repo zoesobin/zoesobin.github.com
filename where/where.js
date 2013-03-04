@@ -74,7 +74,7 @@ function renderMap()
 
     var marker = new google.maps.Marker({
     	position: me,
-        title: "Here I Am!"
+        title: "Found you!"
     });
     marker.setMap(map);
 
