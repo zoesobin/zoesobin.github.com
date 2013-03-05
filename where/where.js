@@ -243,6 +243,7 @@ function parse()
 		info.open('GET', 'http://mbtamap-cedar.herokuapp.com/mapper/redline.json', true);
 		info.send(null);
 		info.onreadystatechange= callback;
+		
 		people = new XMLHttpRequest();
 		people.open('GET', 'http://messagehub.herokuapp.com/a3.json', true);
 		people.send(null);
@@ -251,7 +252,7 @@ function parse()
 }
 function parsejson()
 {
-  	if(people.readyState == people.DONE) {
+  	if(people.readyState == 4) {
     	if(people.status == 200 && people.responseXML != null && people.responseXML.getElementById('test').textContent) {
       		// success!
       		parsed2 = JSON.parse(people.responseText);
@@ -260,6 +261,10 @@ function parsejson()
 		}
     	// something went wrong
   	}
+  	else if(info.status==0){
+		alert("error");
+	}
+
 
 }
 
@@ -267,6 +272,9 @@ function callback()
 {
 		if (info.readyState == 4 && info.status == 200){
 			parsed = JSON.parse(info.responseText);
+		}
+		else if(info.status==0){
+			alert("error");
 		}
 }
 
