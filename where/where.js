@@ -82,7 +82,7 @@ function renderMap()
     infowindow = new google.maps.InfoWindow;
     google.maps.event.addListener(marker, 'click', function() {
     	infowindow.close();
-    	infowindow.setContent(marker.title+'<br> Closest Station: '+stations[sta].name + '<br>Distance: ' + closest+' miles');
+    	infowindow.setContent(marker.title+'<br>Coordinates: '+myLat+' '+myLng+'<br> Closest Station: '+stations[sta].name + '<br>Distance: ' + closest+' miles');
     	infowindow.open(map, marker);
     });
     
@@ -135,7 +135,7 @@ function findPeople(){
 	
 	var marker1 = new google.maps.Marker({
     	position: new google.maps.LatLng(walLat,walLon),
-        title: 'You found me! I am only ' + distanceWaldo+' kilometers away!',
+        title: 'You found me at '+walLat+' '+walLon+'!<br> I am only ' + distanceWaldo+' kilometers away!',
         icon: 'waldo.png'
     });
     marker1.setMap(map);
@@ -150,7 +150,7 @@ function findPeople(){
     
 	var marker2 = new google.maps.Marker({
     	position: new google.maps.LatLng(carLat,carLon),
-        title: 'You found me! I am only '+ distanceCarmen+' kilometers away!',
+        title: 'You found me at '+carLat+' '+carLon+'!<br> I am only '+ distanceCarmen+' kilometers away!',
         icon: 'carmen.png'
     });
     
@@ -162,7 +162,6 @@ function findPeople(){
     	infowindow.setContent(marker2.title);
     	infowindow.open(map, marker2);
     });
-    
 
 }
 
