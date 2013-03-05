@@ -53,7 +53,7 @@ function getMyLocation()
     	navigator.geolocation.getCurrentPosition(function(position) {
     	myLat = position.coords.latitude;
     	myLng = position.coords.longitude;
-    	renderMap();
+    	renderUser();
     });
 }
 	else {
@@ -61,7 +61,7 @@ function getMyLocation()
         }
 }
 //renders map and marker with the users location
-function renderMap()
+function renderUser()
 {
     me = new google.maps.LatLng(myLat, myLng);
 
