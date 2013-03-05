@@ -39,7 +39,7 @@ var myOptions = {
         };
 var map;
 var marker;
-
+var geocheck = false;
 
 function createmap()
 {
@@ -53,6 +53,7 @@ function getMyLocation()
     	navigator.geolocation.getCurrentPosition(function(position) {
     	myLat = position.coords.latitude;
     	myLng = position.coords.longitude;
+    	geocheck=true;
     	renderUser();
     });
 }
@@ -128,10 +129,10 @@ function findPeople(){
 		}
 	}
 	
-	
-	distanceWaldo = calculateDistance(myLat, myLng, walLat, walLon);
-    distanceCarmen = calculateDistance(myLat, myLng, carLat, carLon);
-	
+	if (geocheck==true){
+		distanceWaldo = calculateDistance(myLat, myLng, walLat, walLon);
+    	distanceCarmen = calculateDistance(myLat, myLng, carLat, carLon);
+	}
 	
 	var marker1 = new google.maps.Marker({
     	position: new google.maps.LatLng(walLat,walLon),
@@ -281,7 +282,7 @@ function callback()
 function getTimes(i)
 {
 	stations[i].times = "<br>";
-		//find northbound from that station
+	//find northbound from that station
 	if (stations[i].directions[0]!=null){
 		stations[i].times = stations[i].times + 'Northbound Trains:' +'<br>';
 		for (var j=0;parsed[j]!=null; j++){
@@ -290,7 +291,8 @@ function getTimes(i)
 			}
 		}
 	}
-		//find southbound
+	
+	//find southbound
 	if (stations[i].directions[1]!=null){
 		stations[i].times = stations[i].times + 'Southbound Trains:' +'<br>';
 		for (var j=0;parsed[j]!=null; j++){
