@@ -168,7 +168,7 @@ function findPeople(){
 //Haversine Formula -- source: http://www.movable-type.co.uk/scripts/latlong.html
 function calculateDistance(lat1, lon1, lat2, lon2)
 {
-	var R = 6371; // km
+	var R = 3963; // miles
 	var dLat = toRad(lat2-lat1);
 	var dLon = toRad(lon2-lon1);
 	var lat1 = toRad(lat1);
