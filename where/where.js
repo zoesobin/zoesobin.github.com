@@ -261,7 +261,7 @@ function parsejson()
 		}
     	// something went wrong
   	}
-  	else if(info.status==0){
+  	else if(people.status==0){
 		alert("error");
 	}
 
