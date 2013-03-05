@@ -252,7 +252,7 @@ function parse()
 }
 function parsejson()
 {
-		if (info.readyState == 4 && info.status == 200){
+		if (people.readyState == 4 && people.status == 200){
       		// success!
       		parsed2 = JSON.parse(people.responseText);
 			findPeople();
