@@ -259,7 +259,7 @@ function parsejson()
 			return;
 		}
     	// something went wrong
-    	return;
+    	alert("cannot parse character JSON");
   	}
 }
 
