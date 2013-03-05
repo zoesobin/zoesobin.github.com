@@ -252,15 +252,14 @@ function parse()
 }
 function parsejson()
 {
-  	if(people.readyState == 4) {
-    	if(people.status == 200 && people.responseXML != null && people.responseXML.getElementById('test').textContent) {
+		if (info.readyState == 4 && info.status == 200){
       		// success!
       		parsed2 = JSON.parse(people.responseText);
 			findPeople();
 			return;
 		}
     	// something went wrong
-  	}
+  
   	else if(people.status==0){
 		alert("error");
 	}
