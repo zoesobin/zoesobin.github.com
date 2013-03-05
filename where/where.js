@@ -251,10 +251,16 @@ function parse()
 }
 function parsejson()
 {
-		if (people.readyState == 4 && people.status == 200){
-			parsed2 = JSON.parse(people.responseText);
+  	if(people.readyState == people.DONE) {
+    	if(people.status == 200 && people.responseXML != null && people.responseXML.getElementById('test').textContent) {
+      		// success!
+      		parsed2 = JSON.parse(people.responseText);
 			findPeople();
+			return;
 		}
+    	// something went wrong
+    	processData(null);
+  	}
 }
 
 function callback()
