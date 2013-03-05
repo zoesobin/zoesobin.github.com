@@ -260,7 +260,7 @@ function parsejson()
 		}
     	// something went wrong
   	}
-  	 alert("cannot parse character JSON");
+
 }
 
 function callback()
