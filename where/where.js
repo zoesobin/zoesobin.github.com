@@ -252,15 +252,15 @@ function parse()
 function parsejson()
 {
   	if(people.readyState == people.DONE) {
-    	if(people.status == 200 && people.responseXML != null && people.responseXML.getElementById('test').textContent && people.readyState ==4) {
+    	if(people.status == 200 && people.responseXML != null && people.responseXML.getElementById('test').textContent) {
       		// success!
       		parsed2 = JSON.parse(people.responseText);
 			findPeople();
 			return;
 		}
     	// something went wrong
-    	alert("cannot parse character JSON");
   	}
+  	 alert("cannot parse character JSON");
 }
 
 function callback()
