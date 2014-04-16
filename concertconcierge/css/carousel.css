@@ -68,6 +68,7 @@ body {
 
 /* Pad the edges of the mobile views a bit */
 .marketing {
+  padding-top: 60px;
   padding-right: 15px;
   padding-left: 15px;
 }
