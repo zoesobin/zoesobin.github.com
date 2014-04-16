@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Listings</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/layout.css" rel="stylesheet">
+	<link href="css/mappage.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	<script src="js/bootstrap.js"> </script>
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+	<script src="js/map.js"></script>
+	<script src="js/postlistings.js"></script>
+	<script src="js/jscharts.js"></script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</head>
+
+<body onload="init()">
+  <div class="masthead">
+		<div class="masthead-inner">
+	   	<button class="btn btn-primary btn-small btn-danger" style="float:left;" type="button" onclick="deleteUser()">Delete Account</button>
+    	<h1 class="text-center header"> Jumbo <span class="brown"> Park </span>
+    	<span> 
+		<button class="btn btn-primary btn-small btn-danger" style="float:right;" type="button" onclick="logout()">Logout</button>
+    	</span></h1>
+    	
+    	<h2 class="text-center header-description"> Tufts Premier Off Campus Parking Website</h2>
+		</div>
+	</div>
+	<div class="container wrapper">
+		<div class="row">
+		<div class="span3">
+		<div class="tabbable">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab1" data-toggle="tab">Listings</a></li>
+				<li><a href="#tab2" data-toggle="tab">Filters</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab1">
+					<table class="table table-hover table-condensed table-bordered">
+					</table>
+				</div>
+				<div class="tab-pane" id="tab2">
+					<form class="form-filter">
+						<h2 class="form-heading">Price Range</h2>
+
+							<input type="minimum" id="min" class="input-block-level" placeholder="min">
+							<input type="maximum" id="max" class="input-block-level" placeholder="max">
+						<h2 class="form-heading">Length</h2>
+							<label class="radio">
+								<input type="radio" name="radios" id="weekend" value="option1"> Weekend (2-3 days)</br>
+								<input type="radio" name="radios" id="week" value="option2"> Week (1-2 weeks) </br>
+								<input type="radio" name="radios" id="semester" value="option3"> Semester (4-5 months) </br>
+								<input type="radio" name="radios" id="year" value="option4"> Year (full academic year) </br>
+							</label>
+						<h2 class="form-heading">Parking Type</h2>
+							<label class="radio">
+								<input type="radio" name="radio2" id="garage" value="garage">Garage</br>
+								<input type="radio" name="radio2" id="street" value="street">Street</br>
+								<input type="radio" name="radio2" id="lot" value="lot">Lot</br>
+
+							</label>
+							</br>
+							<button class="btn btn-primary btn-small" type="button" onclick="filter()">Filter</button>
+							<button class="btn btn-primary btn-small btn-danger" type="button" onclick="resetListings()">Reset</button>
+							</br></br></br>
+
+							<a href="#myModal" role="button" class="btn btn-info btn-block " data-toggle="modal">See Listing Types</a>
+ 
+<!-- Modal -->
+							<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  								<div class="modal-header">
+    								<h3 id="myModalLabel">Listing Types</h3>
+  								</div>
+  								<div class="modal-body" id="chartcontainer">
+  								</div>
+ 								<div class="modal-footer">
+    								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  								</div>
+							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+		<div class="span3">
+			<a href="#listModal" role="button" class="btn btn-success btn-block" data-toggle="modal">Make A New Listing</a>
+				<div id="listModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+						<h3 id="myModalLabel" class="text-center">New Listing</h3>
+					</div>
+					<div class="modal-body">
+						<table class="table">
+							<tr><td>
+								<input id="streetaddress" type="text" class="input" placeholder="Street Address">
+								<input id="city" type="text" class="input" placeholder="city">
+								<input id="state" type="text" class="input" placeholder="state">	
+								<input id="price" type="text" class="input" placeholder="Price">							
+								<input id="startdate" type="text" class="input" placeholder="Start Date">
+								<input id="enddate" type="text" class="input" placeholder="End Date">
+								<input id="email" type="email" class="input-block-level expand" placeholder="Your @tufts.edu email">
+								
+							</td></tr>
+							<tr><td>
+								<select id="parkingtype">
+									<option value="Street Parking">Street Parking</option>
+									<option value="Garage Parking">Garage Parking</option>
+									<option value="Lot Parking">Lot Parking</option>
+								</select>
+								<select id="pl">
+									<option value="weekend">Weekend</option>
+									<option value="week">Week</option>
+									<option value="semester">Semester</option>
+									<option value="year">Year</option>
+								</select>
+							</td></tr>
+							<tr><td><textarea id="description" rows="3" placeholder = "Description"></textarea></td></tr>		
+						</table>
+					</div>
+					<div class="modal-footer">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out my new listing on Jumbo Park!">Tweet</a>
+						<input type="submit" class="btn" onclick="postListings()" data-dismiss="modal" value="Add Space"/>
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+		</div>
+		<div class="span9 map" id="map_canvas">
+		</div>
+	</div>
+</div>	
+</body>
+</html>
